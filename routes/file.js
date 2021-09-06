@@ -29,7 +29,7 @@ router.post('/', (req, res) => {
     const file = new File({
       filename: req.file.originalname,
       uuid: uuid4(),
-      url: cloudUpload.url,
+      url: cloudUpload.secure_url,
       size: req.file.size
     })
 
