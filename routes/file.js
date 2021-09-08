@@ -39,7 +39,7 @@ router.post('/', (req, res) => {
 
 			res.status(200).json({ file: `${response.uuid}` })
 		} catch (error) {
-			next(error)
+			console.log('error : ', error)
 		}
 	})
 })
