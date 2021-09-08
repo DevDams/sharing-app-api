@@ -6,9 +6,9 @@ const File = require('../models/file.model')
 const { v4: uuid4 } = require('uuid')
 
 router.post('/', (req, res) => {
-  // store file
-  try {
-    uploadMulter(req, res, async (err) => {
+	// store file
+	uploadMulter(req, res, async (err) => {
+		try {
 			// Validate data
 			if (!req.file) {
 				res.json({ error: "Veillez choisir un fichier s'il vous plait" })
@@ -19,7 +19,10 @@ router.post('/', (req, res) => {
 			}
 
 			// Upload file to cloudinary
-			const cloudUpload = await cloud.uploader.upload(req.file.path, function(err, result) {
+			const cloudUpload = await cloud.uploader.upload(req.file.path, function(
+				err,
+				result
+			) {
 				return result
 			})
 
@@ -34,11 +37,8 @@ router.post('/', (req, res) => {
 			const response = await file.save()
 
 			res.status(200).json({ file: `${response.uuid}` })
-		})
-  } catch (error) {
-    next(error)
-  }
-
+		} catch (error) {}
+	})
 })
 
 module.exports = router
