@@ -19,10 +19,7 @@ router.post('/', (req, res) => {
 			}
 
 			// Upload file to cloudinary
-			const cloudUpload = await cloud.uploader.upload(req.file.path, function(
-				err,
-				result
-			) {
+			const cloudUpload = await cloud.uploader.upload(req.file.path, function(err, result) {
 				return result
 			})
 
@@ -39,8 +36,7 @@ router.post('/', (req, res) => {
 			res.status(200).json({ file: `${response.uuid}` })
 		})
   } catch (error) {
-		console.log('error :', error)
-    next(err)
+    next(error)
   }
 
 })
