@@ -4,7 +4,6 @@ const cloudinary = require('../utils/cloudinary')
 const cloud = require('cloudinary').v2
 const File = require('../models/file.model')
 const { v4: uuid4 } = require('uuid')
-const { nextTick } = require('@vue/runtime-core')
 
 router.post('/', (req, res) => {
 	// store file
