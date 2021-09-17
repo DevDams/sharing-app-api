@@ -29,7 +29,7 @@ router.post('/', (req, res) => {
 
 			// store into database
 			const file = new File({
-				filename: Date.now() + path.extname(file.originalname),
+				filename: Date.now() + path.extname(req.file.originalname),
 				uuid: uuid4(),
 				cloudinary_id: cloudUpload.public_id,
 				url: cloudUpload.secure_url,
