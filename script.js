@@ -11,12 +11,12 @@ async function fetchData() {
 		if (files.length) {
 			for (const file of files) {
 				try {
-					// await cloudinary.v2.uploader.destroy(file.public_id, function (err, result) {
-					//   console.log('File delete from cloudinary :', result)
-					// })
-					await file.remove()
-					console.log(`successfully deleted ${file.filename}`)
-				} catch (error) {
+							// await cloudinary.v2.uploader.destroy(file.cloudinary_id, function (err, result) {
+							//   console.log('File delete from cloudinary :', result)
+							// })
+							await file.remove()
+							console.log(`successfully deleted ${file.filename}`)
+						} catch (error) {
 					console.log(`error while deleting file : ${error}`)
 				}
 			}

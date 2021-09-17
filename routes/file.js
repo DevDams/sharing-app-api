@@ -1,4 +1,5 @@
 const router = require('express').Router()
+const path = require('path')
 const uploadMulter = require('../utils/multer')
 const cloudinary = require('../utils/cloudinary')
 const cloud = require('cloudinary').v2
@@ -28,8 +29,9 @@ router.post('/', (req, res) => {
 
 			// store into database
 			const file = new File({
-				filename: req.file.originalname,
+				filename: Date.now() + path.extname(file.originalname),
 				uuid: uuid4(),
+				cloudinary_id: cloudUpload.public_id,
 				url: cloudUpload.secure_url,
 				size: req.file.size,
 			})
